@@ -6,7 +6,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Feminicídio no Paraná | Informação, Prevenção e Proteção</title>
     <link rel="stylesheet" href="style.css">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.4/chart.umd.min.js"></script>
 </head>
 
 <body>
@@ -150,35 +149,7 @@
                     </div>
                 </div>
 
-                <div class="charts-grid">
-                    <div class="chart-card">
-                        <h3>Feminicídios no Paraná — evolução anual</h3>
-                        <div class="chart-wrap">
-                            <canvas id="chartAnual"></canvas>
-                        </div>
-                    </div>
-                    <div class="chart-card">
-                        <h3>Janeiro/2025 vs Janeiro/2026 no Paraná</h3>
-                        <div class="chart-wrap">
-                            <canvas id="chartJaneiro"></canvas>
-                        </div>
-                    </div>
-                    <div class="chart-card">
-                        <h3>Casos por estado — 1º trimestre de 2026</h3>
-                        <div class="chart-wrap">
-                            <canvas id="chartEstados"></canvas>
-                        </div>
-                    </div>
-                    <div class="chart-card">
-                        <h3>Feminicídios no Brasil — 1º trimestre de 2026 por mês</h3>
-                        <div class="chart-wrap">
-                            <canvas id="chartMeses"></canvas>
-                        </div>
-                    </div>
-                </div>
-
                 <h3 class="sub-h">Panorama nacional (Brasil, 2025)</h3>
-
                 <div class="grid-2">
                     <div>
                         <ul class="styled-list">
@@ -538,112 +509,6 @@
         </div>
     </footer>
 
-    <script>
-        const purple = '#9b5de5';
-        const purpleDeep = '#6c2bd9';
-        const purpleSoft = '#c8a2f0';
-        const red = '#e5395d';
-        const textMuted = '#b4acc4';
-        const gridColor = 'rgba(155, 93, 229, 0.12)';
-
-        Chart.defaults.color = textMuted;
-        Chart.defaults.font.family = "'Segoe UI', Arial, sans-serif";
-
-        const commonScales = {
-            x: { grid: { color: gridColor }, ticks: { color: textMuted } },
-            y: { grid: { color: gridColor }, ticks: { color: textMuted }, beginAtZero: true }
-        };
-
-        // 1. Evolução anual no Paraná
-        new Chart(document.getElementById('chartAnual'), {
-            type: 'bar',
-            data: {
-                labels: ['2024', '2025'],
-                datasets: [{
-                    label: 'Feminicídios no Paraná',
-                    data: [109, 87],
-                    backgroundColor: [purpleDeep, purple],
-                    borderRadius: 8,
-                    maxBarThickness: 90
-                }]
-            },
-            options: {
-                responsive: true,
-                maintainAspectRatio: false,
-                plugins: { legend: { display: false } },
-                scales: commonScales
-            }
-        });
-
-        // 2. Janeiro 2025 vs Janeiro 2026
-        new Chart(document.getElementById('chartJaneiro'), {
-            type: 'bar',
-            data: {
-                labels: ['Jan/2025', 'Jan/2026'],
-                datasets: [{
-                    label: 'Casos em janeiro',
-                    data: [13, 8],
-                    backgroundColor: [red, purple],
-                    borderRadius: 8,
-                    maxBarThickness: 90
-                }]
-            },
-            options: {
-                responsive: true,
-                maintainAspectRatio: false,
-                plugins: { legend: { display: false } },
-                scales: commonScales
-            }
-        });
-
-        // 3. Casos por estado - 1º trimestre 2026
-        new Chart(document.getElementById('chartEstados'), {
-            type: 'bar',
-            data: {
-                labels: ['São Paulo', 'Minas Gerais', 'Paraná', 'Bahia', 'Rio G. do Sul'],
-                datasets: [{
-                    label: 'Casos no 1º trimestre de 2026',
-                    data: [86, 42, 33, 25, 24],
-                    backgroundColor: (ctx) => ctx.dataIndex === 2 ? purple : 'rgba(155, 93, 229, 0.35)',
-                    borderRadius: 8
-                }]
-            },
-            options: {
-                indexAxis: 'y',
-                responsive: true,
-                maintainAspectRatio: false,
-                plugins: { legend: { display: false } },
-                scales: {
-                    x: { grid: { color: gridColor }, ticks: { color: textMuted }, beginAtZero: true },
-                    y: { grid: { color: 'transparent' }, ticks: { color: textMuted } }
-                }
-            }
-        });
-
-        // 4. Feminicídios no Brasil por mês - 1º trimestre 2026
-        new Chart(document.getElementById('chartMeses'), {
-            type: 'line',
-            data: {
-                labels: ['Janeiro', 'Fevereiro', 'Março'],
-                datasets: [{
-                    label: 'Vítimas de feminicídio no Brasil',
-                    data: [142, 123, 134],
-                    borderColor: purpleSoft,
-                    backgroundColor: 'rgba(155, 93, 229, 0.2)',
-                    fill: true,
-                    tension: 0.35,
-                    pointBackgroundColor: purple,
-                    pointRadius: 5
-                }]
-            },
-            options: {
-                responsive: true,
-                maintainAspectRatio: false,
-                plugins: { legend: { display: false } },
-                scales: commonScales
-            }
-        });
-    </script>
 </body>
 
 </html>

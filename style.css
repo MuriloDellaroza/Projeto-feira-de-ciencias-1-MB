@@ -379,33 +379,6 @@ p {
     color: var(--text-dim);
 }
 
-.charts-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 24px;
-    margin-bottom: 56px;
-}
-
-.chart-card {
-    background: linear-gradient(160deg, var(--bg-card), var(--bg-alt));
-    border: 1px solid var(--border-soft);
-    border-radius: 14px;
-    padding: 28px;
-}
-
-.chart-card h3 {
-    font-size: 1rem;
-    color: var(--purple-soft);
-    margin-bottom: 20px;
-    font-weight: 600;
-}
-
-.chart-wrap {
-    position: relative;
-    height: 260px;
-    width: 100%;
-}
-
 .source-note {
     font-size: 0.82rem;
     color: var(--text-dim);
@@ -666,8 +639,7 @@ p {
     .violence-grid,
     .emergency-grid,
     .plan-grid,
-    .cycle-steps,
-    .charts-grid {
+    .cycle-steps {
         grid-template-columns: 1fr;
     }
 
