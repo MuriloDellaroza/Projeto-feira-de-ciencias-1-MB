@@ -1,54 +1,426 @@
+HTML
 <!DOCTYPE html>
 <html lang="pt-BR">
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>Feminicídio no Paraná</title>
-    <link rel="stylesheet" href="style.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Não Seremos a Próxima | Feminicídio no Paraná</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Playfair+Display:wght@700&amp;display=swap');
+
+        :root {
+            --roxo: #9F4BFF;
+            --roxo-escuro: #7B2CCF;
+            --cinza-escuro: #1A1A1A;
+            --cinza-medio: #2A2A2A;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--cinza-escuro);
+            color: #E0E0E0;
+            line-height: 1.6;
+        }
+
+        header {
+            background: linear-gradient(135deg, var(--cinza-escuro), #2A2A2A);
+            padding: 2rem 0;
+            border-bottom: 4px solid var(--roxo);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+
+        nav {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            color: var(--roxo);
+            text-decoration: none;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: #E0E0E0;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--roxo);
+        }
+
+        .hero {
+            height: 100vh;
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.8)), url('https://picsum.photos/id/1015/2000/1200') center/cover;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            margin-top: 80px;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            padding: 2rem;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            color: white;
+            margin-bottom: 1rem;
+            text-shadow: 0 0 20px rgba(159, 75, 255, 0.5);
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            margin-bottom: 2rem;
+            color: #ddd;
+        }
+
+        .btn {
+            display: inline-block;
+            background: var(--roxo);
+            color: white;
+            padding: 1rem 2.5rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+            border: 2px solid var(--roxo);
+        }
+
+        .btn:hover {
+            background: transparent;
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(159, 75, 255, 0.4);
+        }
+
+        section {
+            padding: 6rem 0;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding-left: 2rem;
+            padding-right: 2rem;
+        }
+
+        h2 {
+            font-size: 2.8rem;
+            color: var(--roxo);
+            margin-bottom: 2rem;
+            position: relative;
+            display: inline-block;
+        }
+
+        h2:after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 60px;
+            height: 4px;
+            background: var(--roxo);
+        }
+
+        .card-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+        }
+
+        .card {
+            background: var(--cinza-medio);
+            border-radius: 12px;
+            padding: 2rem;
+            transition: transform 0.3s, box-shadow 0.3s;
+            border: 1px solid #444;
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(159, 75, 255, 0.2);
+        }
+
+        .card h3 {
+            color: var(--roxo);
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+        }
+
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+
+        .stat-item {
+            text-align: center;
+            background: var(--cinza-medio);
+            padding: 2rem;
+            border-radius: 12px;
+            border-left: 6px solid var(--roxo);
+        }
+
+        .stat-number {
+            font-size: 3rem;
+            font-weight: 700;
+            color: var(--roxo);
+        }
+
+        footer {
+            background: #111;
+            padding: 4rem 0 2rem;
+            text-align: center;
+            border-top: 3px solid var(--roxo);
+        }
+
+        .emergency-bar {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: #9F4BFF;
+            color: white;
+            padding: 1rem 2rem;
+            border-radius: 50px;
+            font-weight: bold;
+            box-shadow: 0 10px 30px rgba(159, 75, 255, 0.5);
+            z-index: 9999;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+    </style>
 </head>
 
 <body>
     <header>
-        <h1>Feminicídio no Paraná</h1>
-        <nav><a href="#sobre">Sobre</a><a href="#casos">Casos</a><a href="#estatisticas">Estatísticas</a><a
-                href="#violencia">Tipos de Violência</a><a href="#prevencao">Como não ser a próxima</a><a
-                href="#emergencia">Emergência</a></nav>
+        <nav>
+            <a href="#" class="logo">Não Seremos a Próxima</a>
+            <ul class="nav-links">
+                <li><a href="#casos">Casos</a></li>
+                <li><a href="#estatisticas">Estatísticas</a></li>
+                <li><a href="#emergencia">Emergência</a></li>
+                <li><a href="#tipos">Tipos de Violência</a></li>
+                <li><a href="#sobre">Sobre</a></li>
+                <li><a href="#prevencao">Como Não Ser a Próxima</a></li>
+            </ul>
+        </nav>
     </header>
-    <section id="sobre">
-        <h2>Sobre</h2>
-        <p>Este é um modelo inicial. O feminicídio é o assassinato de mulheres por razões da condição de sexo
-            feminino...</p>
+
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Feminicídio no Paraná</h1>
+            <p>Uma em cada três mulheres sofre algum tipo de violência. O silêncio mata. Denuncie. Proteja-se. Exija
+                justiça.</p>
+            <a href="#emergencia" class="btn">LIGUE AGORA - 180</a>
+        </div>
     </section>
+
     <section id="casos">
-        <h2>Casos</h2>
-        <p>Adicione estudos de casos públicos e contextualizados.</p>
+        <h2>Casos Recentes no Paraná</h2>
+        <p style="max-width: 800px; margin-bottom: 3rem;">O Paraná registrou casos dolorosos que reforçam a urgência de
+            ação. Aqui destacamos alguns para conscientização (fontes: Polícia Civil PR e mídia local).</p>
+
+        <div class="card-grid">
+            <div class="card">
+                <h3>Curitiba - Dezembro 2025</h3>
+                <p>Três feminicídios em um único fim de semana na capital. Vítimas entre 20 e 40 anos, agredidas por
+                    parceiros ou ex-parceiros. Um dos casos ocorreu em via pública.</p>
+                <small style="color: #aaa;">Fonte: G1 Paraná</small>
+            </div>
+            <div class="card">
+                <h3>Região Norte - 2025</h3>
+                <p>Múltiplos casos em cidades do norte do estado em curto intervalo. Agressores frequentemente com
+                    histórico de violência doméstica ignorado.</p>
+                <small style="color: #aaa;">Band Paraná</small>
+            </div>
+            <div class="card">
+                <h3>Estadual - Tendência</h3>
+                <p>Muitos casos envolvem ex-companheiros, ciúmes e descumprimento de medidas protetivas. A
+                    subnotificação é alta.</p>
+            </div>
+        </div>
     </section>
-    <section id="estatisticas">
-        <h2>Estatísticas</h2>
-        <p>Inclua dados oficiais recentes do Paraná.</p>
+
+    <section id="estatisticas" style="background: #222;">
+        <h2>Estatísticas no Paraná</h2>
+
+        <div class="stats">
+            <div class="stat-item">
+                <div class="stat-number">87</div>
+                <p>Feminicídios em 2025 (queda de ~20% em relação a 2024)</p>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number">109</div>
+                <p>Feminicídios em 2024</p>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number">0,73</div>
+                <p>Taxa por 100 mil habitantes em 2025 (uma das menores do Brasil)</p>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number">355</div>
+                <p>Feminicídios consumados + tentados em 2025 (Monitor LESFEM)</p>
+            </div>
+        </div>
+
+        <p style="margin-top: 3rem; font-style: italic;">Apesar da redução oficial, o subregistro é preocupante. O
+            Datasus indica números bem maiores de mortes por agressão. A violência contra a mulher ainda é uma epidemia
+            silenciosa no estado.<grok-card data-id="2f52bf" data-type="citation_card"
+                data-plain-type="render_inline_citation"></grok-card><grok-card data-id="2a3e40"
+                data-type="citation_card" data-plain-type="render_inline_citation"></grok-card></p>
     </section>
-    <section id="violencia">
-        <h2>Tipos de Violência</h2>
-        <ul>
-            <li>Física</li>
-            <li>Psicológica</li>
-            <li>Sexual</li>
-            <li>Patrimonial</li>
-            <li>Moral</li>
-        </ul>
-    </section>
-    <section id="prevencao">
-        <h2>Como não ser a próxima</h2>
-        <p>Reconheça sinais, busque rede de apoio, denuncie e utilize medidas protetivas.</p>
-    </section>
+
     <section id="emergencia">
-        <h2>Números</h2>
-        <ul>
-            <li>190</li>
-            <li>180</li>
-        </ul>
+        <h2>Números de Emergência</h2>
+        <div class="card-grid">
+            <div class="card">
+                <h3>🚨 Ligue 180</h3>
+                <p><strong>Central de Atendimento à Mulher</strong><br>24h, sigiloso e gratuito. Orientação, denúncia e
+                    encaminhamento.</p>
+                <a href="tel:180" class="btn" style="padding: 0.8rem 1.5rem; font-size: 1.1rem;">LIGAR 180</a>
+            </div>
+            <div class="card">
+                <h3>👮 190 - Polícia Militar</h3>
+                <p>Emergência imediata. Flagrante ou risco de vida.</p>
+            </div>
+            <div class="card">
+                <h3>📞 181 - Disque Denúncia</h3>
+                <p>Denúncia anônima de violência.</p>
+            </div>
+            <div class="card">
+                <h3>App 190 PR</h3>
+                <p>Botão do Pânico para mulheres com medida protetiva.</p>
+            </div>
+        </div>
     </section>
+
+    <section id="tipos" style="background: #222;">
+        <h2>Tipos de Violência (Lei Maria da Penha)</h2>
+        <div class="card-grid">
+            <div class="card">
+                <h3>1. Física</h3>
+                <p>Agressões que ofendem a integridade corporal: tapas, socos, chutes, queimaduras, uso de armas.</p>
+            </div>
+            <div class="card">
+                <h3>2. Psicológica</h3>
+                <p>Humilhações, ameaças, controle, isolamento, gaslighting, vigilância constante.</p>
+            </div>
+            <div class="card">
+                <h3>3. Sexual</h3>
+                <p>Constrangimento a atos sexuais não desejados, abuso, negação de métodos contraceptivos.</p>
+            </div>
+            <div class="card">
+                <h3>4. Patrimonial</h3>
+                <p>Controle do dinheiro, destruição de bens, impedimento de trabalhar.</p>
+            </div>
+            <div class="card">
+                <h3>5. Moral</h3>
+                <p>Calúnia, difamação, injúria contra a mulher.</p>
+            </div>
+        </div>
+        <p style="margin-top: 3rem; text-align: center; font-size: 1.1rem;">Qualquer uma delas pode escalar para
+            feminicídio. Não minimize sinais.<grok-card data-id="f13902" data-type="citation_card"
+                data-plain-type="render_inline_citation"></grok-card></p>
+    </section>
+
+    <section id="sobre">
+        <h2>Sobre o Feminicídio</h2>
+        <p style="max-width: 900px; font-size: 1.2rem;">Feminicídio é o assassinato de mulheres motivado por razões de
+            gênero. No Brasil, é crime hediondo desde 2015. No Paraná, a maioria dos casos ocorre no âmbito doméstico,
+            cometido por parceiros ou ex-parceiros. É a ponta extrema de um ciclo de violência que começa com controle e
+            humilhação.</p>
+
+        <div style="margin-top: 3rem; background: var(--cinza-medio); padding: 2rem; border-radius: 12px;">
+            <h3 style="color: var(--roxo);">Por que acontece?</h3>
+            <ul style="margin-left: 1.5rem;">
+                <li>Machismo estrutural e desigualdade de gênero</li>
+                <li>Histórico de violência não denunciado</li>
+                <li>Descumprimento de medidas protetivas</li>
+                <li>Falta de rede de apoio e independência financeira</li>
+            </ul>
+        </div>
+    </section>
+
+    <section id="prevencao" style="background: #222;">
+        <h2>Como Não Ser a Próxima</h2>
+        <div class="card-grid">
+            <div class="card">
+                <h3>1. Reconheça os Sinais</h3>
+                <p>Ciúmes excessivo, isolamento de amigos/família, controle financeiro, ameaças.</p>
+            </div>
+            <div class="card">
+                <h3>2. Tenha um Plano de Fuga</h3>
+                <p>Guarde documentos, dinheiro, contatos de emergência e chaves em local acessível.</p>
+            </div>
+            <div class="card">
+                <h3>3. Denuncie Cedo</h3>
+                <p>Não espere a violência piorar. Ligue 180 ou registre BO.</p>
+            </div>
+            <div class="card">
+                <h3>4. Construa Rede</h3>
+                <p>Fale com amigas, familiares, ONGs. Busque apoio psicológico.</p>
+            </div>
+            <div class="card">
+                <h3>5. Seja Financeiramente Independente</h3>
+                <p>É uma das maiores proteções contra o ciclo de abuso.</p>
+            </div>
+            <div class="card">
+                <h3>6. Eduque e Exija</h3>
+                <p>Ensine filhos sobre respeito. Exija políticas públicas efetivas.</p>
+            </div>
+        </div>
+        <p style="text-align: center; margin-top: 4rem; font-size: 1.3rem; font-weight: 500;">Você não está sozinha.
+            Peça ajuda. Sobreviva. Viva.</p>
+    </section>
+
+    <footer>
+        <p>&copy; 2026 - Site de Conscientização | Feminicídio Zero no Paraná</p>
+        <p style="margin-top: 1rem; font-size: 0.9rem;">Este site é fictício-educacional e não substitui órgãos
+            oficiais. Denuncie sempre.</p>
+    </footer>
+
+    <div class="emergency-bar">
+        <span>🚨 EMERGÊNCIA:</span>
+        <strong>Ligue 180 ou 190</strong>
+    </div>
+
+    <script>
+        // Smooth scroll
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                if (this.getAttribute('href') !== '#') {
+                    e.preventDefault();
+                    document.querySelector(this.getAttribute('href')).scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+    </script>
 </body>
 
 </html>
